@@ -3,35 +3,33 @@
 namespace Molochka.Movement
 {
 	[RequireComponent(typeof(Rigidbody))]
-	public class MovementRoot : MonoBehaviour
+	public class PlayerMovement : MonoBehaviour
 	{
 		[SerializeField] private Vector3 _position;
 		[SerializeField] private float _speed;
 
 		private Rigidbody _rigidbody;
 		private IMovable _movable;
-		private bool _defalutPosition;
+		private bool _defaultPosition;
 
 		private void FixedUpdate()
 		{
-			_movable.Move(Vector3.up);
+			_rigidbody.velocity = Vector3.up * _speed;
 		}
 
 		private void OnClick()
 		{
-			if (_defalutPosition)
-				_movable.SetPosition(-_position);
+			if (_defaultPosition)
+				_movable.SetPosition(-_position, ref _defaultPosition);
 			else
-				_movable.SetPosition(_position);
-
-			_defalutPosition = !_defalutPosition;
+				_movable.SetPosition(_position, ref _defaultPosition);
 		}
 
 		public void Init()
 		{
 			_rigidbody = GetComponent<Rigidbody>();
-			_defalutPosition = true;	
-			_movable = new Movement(_rigidbody, transform, _speed);
+			_movable = new Movement(transform);
+			_defaultPosition = true;
 		}
 	}
 }

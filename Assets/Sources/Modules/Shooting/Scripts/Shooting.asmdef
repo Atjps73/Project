@@ -1,0 +1,16 @@
+{
+    "name": "Shooting",
+    "rootNamespace": "Molochka.Shooting",
+    "references": [
+        "GUID:9826b7b7fa256fb429b6d271d1bc2a16"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
